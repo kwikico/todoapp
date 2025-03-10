@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pawsitive - A beautiful social platform for pet lovers to connect, share moments, and explore pet services.">
+    <title>Pawsitive - Where Pet Love Connects</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="https://img.icons8.com/pastel-glyph/64/A3D5FF/pets--v1.png" type="image/png">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <div class="nav-container">
+            <div class="top-nav">
+                <div class="logo">Pawsitive</div>
+                <div class="top-icons">
+                    <i class="fas fa-search" onclick="showScreen('explore-screen')"></i>
+                    <i class="fas fa-paper-plane" onclick="showScreen('messages-screen')"></i>
+                    <i class="fas fa-bell" onclick="showScreen('notifications-screen')"></i>
+                </div>
+            </div>
+            
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <div class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-compass"></i>
+                    <span>Explore</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Post</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-store"></i>
+                    <span>Market</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screens Container -->
+        <div class="screens-container">
+            <!-- Welcome Screen -->
+            <div class="screen" id="welcome-screen">
+                <div class="welcome-content">
+                    <div class="logo-large">Pawsitive</div>
+                    <div class="tagline">Where Pet Love Connects</div>
+                    <div class="auth-buttons">
+                        <button class="btn primary" onclick="showScreen('login-screen')">Log In</button>
+                        <button class="btn secondary" onclick="showScreen('signup-screen')">Sign Up</button>
+                    </div>
+                    <div class="social-auth">
+                        <div class="auth-option"><i class="fab fa-google"></i> Continue with Google</div>
+                        <div class="auth-option"><i class="fab fa-apple"></i> Continue with Apple</div>
+                        <div class="auth-option"><i class="fab fa-facebook"></i> Continue with Facebook</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Login Screen -->
+            <div class="screen" id="login-screen">
+                <div class="auth-screen-container">
+                    <div class="auth-header">
+                        <div class="back-button" onclick="showScreen('welcome-screen')"><i class="fas fa-arrow-left"></i></div>
+                        <div class="auth-title">Log In</div>
+                        <div class="spacer"></div>
+                    </div>
+                    <div class="auth-form">
+                        <div class="form-group">
+                            <label for="email">Email or Phone</label>
+                            <input type="text" id="email" placeholder="Enter your email or phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password">
+                        </div>
+                        <div class="forgot-password">Forgot Password?</div>
+                        <button class="btn primary full-width" onclick="showScreen('home-screen')">Log In</button>
+                    </div>
+                    <div class="auth-separator">
+                        <span>OR</span>
+                    </div>
+                    <div class="social-auth">
+                        <div class="auth-option"><i class="fab fa-google"></i> Continue with Google</div>
+                        <div class="auth-option"><i class="fab fa-apple"></i> Continue with Apple</div>
+                        <div class="auth-option"><i class="fab fa-facebook"></i> Continue with Facebook</div>
+                    </div>
+                    <div class="auth-footer">
+                        <span>Don't have an account? <a onclick="showScreen('signup-screen')">Sign Up</a></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sign Up Screen -->
+            <div class="screen" id="signup-screen">
+                <div class="auth-screen-container">
+                    <div class="auth-header">
+                        <div class="back-button" onclick="showScreen('welcome-screen')"><i class="fas fa-arrow-left"></i></div>
+                        <div class="auth-title">Create Account</div>
+                        <div class="spacer"></div>
+                    </div>
+                    <div class="auth-form">
+                        <div class="form-group">
+                            <label for="signup-email">Email or Phone</label>
+                            <input type="text" id="signup-email" placeholder="Enter your email or phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" placeholder="Create a password">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" placeholder="Enter your full name">
+                        </div>
+                        <button class="btn primary full-width" onclick="showScreen('profile-setup-screen')">Continue</button>
+                    </div>
+                    <div class="auth-separator">
+                        <span>OR</span>
+                    </div>
+                    <div class="social-auth">
+                        <div class="auth-option"><i class="fab fa-google"></i> Continue with Google</div>
+                        <div class="auth-option"><i class="fab fa-apple"></i> Continue with Apple</div>
+                        <div class="auth-option"><i class="fab fa-facebook"></i> Continue with Facebook</div>
+                    </div>
+                    <div class="auth-footer">
+                        <span>Already have an account? <a onclick="showScreen('login-screen')">Log In</a></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Setup Screen -->
+            <div class="screen" id="profile-setup-screen">
+                <div class="auth-screen-container">
+                    <div class="auth-header">
+                        <div class="back-button" onclick="showScreen('signup-screen')"><i class="fas fa-arrow-left"></i></div>
+                        <div class="auth-title">Complete Your Profile</div>
+                        <div class="spacer"></div>
+                    </div>
+                    <div class="profile-setup-content">
+                        <div class="profile-photo-upload">
+                            <div class="upload-circle">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="upload-label">Upload Profile Photo</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" placeholder="Tell us about yourself and your pets..."></textarea>
+                        </div>
+                        <div class="pet-info-section">
+                            <div class="section-title">Your Pets</div>
+                            <div class="add-pet-button">
+                                <i class="fas fa-plus"></i> Add a Pet
+                            </div>
+                        </div>
+                        <div class="interest-section">
+                            <div class="section-title">Your Interests</div>
+                            <div class="interest-tags">
+                                <div class="interest-tag">Dogs</div>
+                                <div class="interest-tag">Cats</div>
+                                <div class="interest-tag">Training</div>
+                                <div class="interest-tag">Shows</div>
+                                <div class="interest-tag">Rescue</div>
+                                <div class="interest-tag">Breeds</div>
+                                <div class="interest-tag">Grooming</div>
+                                <div class="interest-tag">Pet Sports</div>
+                            </div>
+                        </div>
+                        <button class="btn primary full-width" onclick="showScreen('intro-screens')">Complete Profile</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Introduction Screens -->
+            <div class="screen" id="intro-screens">
+                <div class="intro-container">
+                    <div class="intro-slides">
+                        <div class="intro-slide active">
+                            <div class="intro-image">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="intro-title">Share Pet Moments</div>
+                            <div class="intro-text">Post photos and videos of your furry friends to share with the community.</div>
+                        </div>
+                        <div class="intro-slide">
+                            <div class="intro-image">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="intro-title">Discover Pet Services</div>
+                            <div class="intro-text">Find breeders, groomers, and pet products all in one place.</div>
+                        </div>
+                        <div class="intro-slide">
+                            <div class="intro-image">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="intro-title">Connect with Pet Lovers</div>
+                            <div class="intro-text">Join communities of fellow enthusiasts who share your passion.</div>
+                        </div>
+                    </div>
+                    <div class="intro-navigation">
+                        <div class="intro-dots">
+                            <div class="intro-dot active"></div>
+                            <div class="intro-dot"></div>
+                            <div class="intro-dot"></div>
+                        </div>
+                        <button class="btn primary" onclick="showScreen('home-screen')">Get Started</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Feed Screen -->
+            <div class="screen" id="home-screen">
+                <div class="feed">
+                    <!-- Post -->
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="user-avatar"></div>
+                            <div class="post-info">
+                                <div class="username">BellaThePup</div>
+                                <div class="location">San Francisco, CA</div>
+                            </div>
+                            <div class="more-options"><i class="fas fa-ellipsis-h"></i></div>
+                        </div>
+                        <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                        <div class="post-actions">
+                            <div class="action-icons">
+                                <i class="far fa-heart"></i>
+                                <i class="far fa-comment"></i>
+                                <i class="far fa-paper-plane"></i>
+                            </div>
+                            <div class="bookmark">
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                        </div>
+                        <div class="post-likes">256 likes</div>
+                        <div class="post-caption">
+                            <span class="username">BellaThePup</span> 
+                            <span class="caption-text">Playing at the park today! #Pawsitive #DogLife</span>
+                        </div>
+                        <div class="post-comments">View all 42 comments</div>
+                        <div class="post-time">2 HOURS AGO</div>
+                    </div>
+
+                    <!-- Post -->
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="user-avatar"></div>
+                            <div class="post-info">
+                                <div class="username">MaxTheCat</div>
+                                <div class="location">Portland, OR</div>
+                            </div>
+                            <div class="more-options"><i class="fas fa-ellipsis-h"></i></div>
+                        </div>
+                        <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                        <div class="post-actions">
+                            <div class="action-icons">
+                                <i class="far fa-heart"></i>
+                                <i class="far fa-comment"></i>
+                                <i class="far fa-paper-plane"></i>
+                            </div>
+                            <div class="bookmark">
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                        </div>
+                        <div class="post-likes">127 likes</div>
+                        <div class="post-caption">
+                            <span class="username">MaxTheCat</span> 
+                            <span class="caption-text">Just chillin' in my favorite spot. #CatLife #PawsitiveVibes</span>
+                        </div>
+                        <div class="post-comments">View all 18 comments</div>
+                        <div class="post-time">5 HOURS AGO</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketplace Screen -->
+            <div class="screen" id="marketplace-screen">
+                <div class="category-tabs">
+                    <div class="tab active">All</div>
+                    <div class="tab">Kennels</div>
+                    <div class="tab">Breeders</div>
+                    <div class="tab">Pet Stores</div>
+                    <div class="tab">Litters</div>
+                    <div class="tab">Shows</div>
+                </div>
+
+                <div class="search-section">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search pets, services..." />
+                    </div>
+                    <div class="filter-button">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                </div>
+
+                <div class="marketplace-grid">
+                    <div class="listing-card">
+                        <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1596492784531-6c9bb5566e54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                        <div class="listing-info">
+                            <div class="listing-title">Golden Retriever Puppies</div>
+                            <div class="listing-description">3 months old, purebred, vaccinated</div>
+                            <div class="listing-price">$1,200</div>
+                            <button class="btn secondary small">Contact</button>
+                        </div>
+                    </div>
+
+                    <div class="listing-card">
+                        <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1516750105099-4b8a83e217ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                        <div class="listing-info">
+                            <div class="listing-title">Pet Grooming Service</div>
+                            <div class="listing-description">Professional grooming for all breeds</div>
+                            <div class="listing-price">From $45</div>
+                            <button class="btn secondary small">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="listing-card">
+                        <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1585837575652-267cbc119a42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                        <div class="listing-info">
+                            <div class="listing-title">Pet Photography</div>
+                            <div class="listing-description">Capture beautiful moments with your pet</div>
+                            <div class="listing-price">From $120</div>
+                            <button class="btn secondary small">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Screen -->
+            <div class="screen" id="profile-screen">
+                <div class="profile-header">
+                    <div class="profile-avatar"></div>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-number">42</div>
+                            <div class="stat-label">Posts</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">1.2k</div>
+                            <div class="stat-label">Followers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">356</div>
+                            <div class="stat-label">Following</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-bio">
+                    <div class="profile-name">Charlie Brown</div>
+                    <div class="bio-text">Pet lover and proud parent of 2 dogs and a cat 🐕 🐈 🐕</div>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="btn secondary">Edit Profile</button>
+                    <button class="btn secondary">Share Profile</button>
+                </div>
+
+                <div class="profile-tabs">
+                    <div class="tab active">Posts</div>
+                    <div class="tab">Pets</div>
+                    <div class="tab">Activity</div>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="grid-item" style="background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="grid-item" style="background-image: url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="grid-item" style="background-image: url('https://images.unsplash.com/photo-1596492784531-6c9bb5566e54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="grid-item" style="background-image: url('https://images.unsplash.com/photo-1585837575652-267cbc119a42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="grid-item" style="background-image: url('https://images.unsplash.com/photo-1516750105099-4b8a83e217ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="grid-item" style="background-image: url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                </div>
+            </div>
+
+            <!-- Post Creation Screen -->
+            <div class="screen" id="post-screen">
+                <div class="post-header-nav">
+                    <div class="cancel-button" onclick="showScreen('home-screen')"><i class="fas fa-arrow-left"></i> Cancel</div>
+                    <div class="next-button" onclick="showScreen('post-details-screen')">Next</div>
+                </div>
+
+                <div class="post-creation-container">
+                    <div class="post-type-selection">
+                        <div class="post-type active" data-type="standard">
+                            <i class="fas fa-camera"></i>
+                            <span>Standard Post</span>
+                        </div>
+                        <div class="post-type" data-type="marketplace">
+                            <i class="fas fa-tags"></i>
+                            <span>Marketplace Listing</span>
+                        </div>
+                    </div>
+
+                    <div class="media-preview" style="background-image: url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                    
+                    <div class="media-options">
+                        <div class="option active" data-media-type="photo">
+                            <i class="fas fa-camera"></i>
+                            <span>Photo</span>
+                        </div>
+                        <div class="option" data-media-type="video">
+                            <i class="fas fa-video"></i>
+                            <span>Video</span>
+                        </div>
+                        <div class="option" data-media-type="gallery">
+                            <i class="fas fa-images"></i>
+                            <span>Gallery</span>
+                        </div>
+                    </div>
+
+                    <div class="media-upload-button">
+                        <i class="fas fa-upload"></i>
+                        <span>Upload Media</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Details Screen (Step 2) -->
+            <div class="screen" id="post-details-screen">
+                <div class="post-header-nav">
+                    <div class="cancel-button" onclick="showScreen('post-screen')"><i class="fas fa-arrow-left"></i> Back</div>
+                    <div class="next-button" onclick="handlePostSubmit()">Share</div>
+                </div>
+
+                <div class="post-details-container" id="standard-post-details">
+                    <div class="small-preview" style="background-image: url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                    
+                    <div class="caption-section">
+                        <textarea placeholder="Write a caption... #Pawsitive"></textarea>
+                    </div>
+
+                    <div class="post-options">
+                        <div class="option-item">
+                            <span>Tag People</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="option-item">
+                            <span>Add Location</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="option-item">
+                            <span>Pet Info</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="option-item">
+                            <span>Category</span>
+                            <div class="category-chips">
+                                <div class="category-chip active">Dogs</div>
+                                <div class="category-chip">Cats</div>
+                                <div class="category-chip">Pet Care</div>
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-details-container" id="marketplace-listing-details" style="display: none;">
+                    <div class="small-preview" style="background-image: url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                    
+                    <div class="form-group">
+                        <label for="listing-title">Title</label>
+                        <input type="text" id="listing-title" placeholder="What are you listing?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="listing-price">Price</label>
+                        <input type="text" id="listing-price" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="listing-description">Description</label>
+                        <textarea id="listing-description" placeholder="Describe what you're selling..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <div class="category-dropdown">
+                            <select>
+                                <option>Pet for Sale</option>
+                                <option>Accessories</option>
+                                <option>Services</option>
+                                <option>Food & Treats</option>
+                                <option>Shows & Events</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="listing-location">Location</label>
+                        <input type="text" id="listing-location" placeholder="Where is this available?">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Post Detail Screen -->
+            <div class="screen" id="post-detail-screen">
+                <div class="post-detail-header">
+                    <div class="back-button" onclick="showScreen('home-screen')"><i class="fas fa-arrow-left"></i></div>
+                    <div class="auth-title">Post</div>
+                    <div class="more-options"><i class="fas fa-ellipsis-h"></i></div>
+                </div>
+                <div class="post-detail-content">
+                    <div class="post-header">
+                        <div class="user-avatar"></div>
+                        <div class="post-info">
+                            <div class="username">BellaThePup</div>
+                            <div class="location">San Francisco, CA</div>
+                        </div>
+                        <div class="more-options"><i class="fas fa-ellipsis-h"></i></div>
+                    </div>
+                    <div class="post-detail-image" style="background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="post-actions">
+                        <div class="action-icons">
+                            <i class="far fa-heart"></i>
+                            <i class="far fa-comment"></i>
+                            <i class="far fa-paper-plane"></i>
+                        </div>
+                        <div class="bookmark">
+                            <i class="far fa-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-likes">256 likes</div>
+                    <div class="post-caption">
+                        <span class="username">BellaThePup</span> 
+                        <span class="caption-text">Playing at the park today! #Pawsitive #DogLife</span>
+                    </div>
+                    <div class="post-time">2 HOURS AGO</div>
+                    
+                    <div class="comments-section">
+                        <div class="comment">
+                            <div class="comment-avatar"></div>
+                            <div class="comment-content">
+                                <div class="comment-username">MaxTheCat</div>
+                                <div class="comment-text">So adorable! Love the energy!</div>
+                                <div class="comment-time">1 hour ago</div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-avatar"></div>
+                            <div class="comment-content">
+                                <div class="comment-username">PuppyLover23</div>
+                                <div class="comment-text">What breed is she? So cute!</div>
+                                <div class="comment-time">45 minutes ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-detail-actions">
+                    <input type="text" class="comment-input" placeholder="Add a comment...">
+                    <div class="send-button">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explore Screen -->
+            <div class="screen" id="explore-screen">
+                <div class="explore-container">
+                    <div class="explore-header">
+                        <div class="explore-title">Discover</div>
+                        <div class="explore-tags">
+                            <div class="explore-tag active">All</div>
+                            <div class="explore-tag">Dogs</div>
+                            <div class="explore-tag">Cats</div>
+                            <div class="explore-tag">Birds</div>
+                            <div class="explore-tag">Exotic</div>
+                            <div class="explore-tag">Shows</div>
+                            <div class="explore-tag">Training</div>
+                            <div class="explore-tag">Adoption</div>
+                        </div>
+                    </div>
+                    <div class="explore-grid">
+                        <div class="explore-item" style="background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');">
+                            <div class="explore-item-overlay">
+                                <span><i class="fas fa-heart"></i> 256</span>
+                                <span><i class="fas fa-comment"></i> 42</span>
+                            </div>
+                        </div>
+                        <div class="explore-item" style="background-image: url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');">
+                            <div class="explore-item-overlay">
+                                <span><i class="fas fa-heart"></i> 127</span>
+                                <span><i class="fas fa-comment"></i> 18</span>
+                            </div>
+                        </div>
+                        <div class="explore-item" style="background-image: url('https://images.unsplash.com/photo-1596492784531-6c9bb5566e54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');">
+                            <div class="explore-item-overlay">
+                                <span><i class="fas fa-heart"></i> 89</span>
+                                <span><i class="fas fa-comment"></i> 7</span>
+                            </div>
+                        </div>
+                        <div class="explore-item" style="background-image: url('https://images.unsplash.com/photo-1516750105099-4b8a83e217ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');">
+                            <div class="explore-item-overlay">
+                                <span><i class="fas fa-heart"></i> 210</span>
+                                <span><i class="fas fa-comment"></i> 32</span>
+                            </div>
+                        </div>
+                        <div class="explore-item" style="background-image: url('https://images.unsplash.com/photo-1585837575652-267cbc119a42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');">
+                            <div class="explore-item-overlay">
+                                <span><i class="fas fa-heart"></i> 154</span>
+                                <span><i class="fas fa-comment"></i> 21</span>
+                            </div>
+                        </div>
+                        <div class="explore-item" style="background-image: url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');">
+                            <div class="explore-item-overlay">
+                                <span><i class="fas fa-heart"></i> 173</span>
+                                <span><i class="fas fa-comment"></i> 19</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Messages Screen -->
+            <div class="screen" id="messages-screen">
+                <div class="messages-container">
+                    <div class="messages-header">
+                        <div class="messages-title">Messages</div>
+                    </div>
+                    <div class="message-list">
+                        <div class="message-item">
+                            <div class="message-avatar"></div>
+                            <div class="message-content">
+                                <div class="message-name">MaxTheCat</div>
+                                <div class="message-preview">Are you going to the pet show this weekend?</div>
+                            </div>
+                            <div class="message-time">2h</div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-avatar"></div>
+                            <div class="message-content">
+                                <div class="message-name">PuppyLover23</div>
+                                <div class="message-preview">Thanks for the grooming tips!</div>
+                            </div>
+                            <div class="message-time">5h</div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-avatar"></div>
+                            <div class="message-content">
+                                <div class="message-name">PetShopCentral</div>
+                                <div class="message-preview">Your order has been shipped! Tracking info...</div>
+                            </div>
+                            <div class="message-time">1d</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Notifications Screen -->
+            <div class="screen" id="notifications-screen">
+                <div class="notifications-container">
+                    <div class="notifications-header">
+                        <div class="notifications-title">Notifications</div>
+                    </div>
+                    <div class="notification-list">
+                        <div class="notification-item">
+                            <div class="notification-avatar"></div>
+                            <div class="notification-content">
+                                <div class="notification-title">MaxTheCat liked your post</div>
+                                <div class="notification-text">Playing at the park today! #Pawsitive</div>
+                            </div>
+                            <div class="notification-time">1h</div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-avatar"></div>
+                            <div class="notification-content">
+                                <div class="notification-title">PuppyLover23 commented on your post</div>
+                                <div class="notification-text">"What breed is she? So cute!"</div>
+                            </div>
+                            <div class="notification-time">45m</div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-avatar"></div>
+                            <div class="notification-content">
+                                <div class="notification-title">PetShowOrganizer mentioned you</div>
+                                <div class="notification-text">"Don't miss @BellaThePup at the upcoming show!"</div>
+                            </div>
+                            <div class="notification-time">3h</div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-avatar"></div>
+                            <div class="notification-content">
+                                <div class="notification-title">New pet show in your area</div>
+                                <div class="notification-text">Golden Retriever Championship this weekend</div>
+                            </div>
+                            <div class="notification-time">1d</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen Navigation Controls (for demo purposes) -->
+            <div class="screen-nav">
+                <button onclick="showScreen('welcome-screen')">Welcome</button>
+                <button onclick="showScreen('login-screen')">Login</button>
+                <button onclick="showScreen('signup-screen')">Signup</button>
+                <button onclick="showScreen('profile-setup-screen')">Profile Setup</button>
+                <button onclick="showScreen('intro-screens')">Intro</button>
+                <button onclick="showScreen('home-screen')">Home</button>
+                <button onclick="showScreen('explore-screen')">Explore</button>
+                <button onclick="showScreen('post-detail-screen')">Post Detail</button>
+                <button onclick="showScreen('post-screen')">Create</button>
+                <button onclick="showScreen('post-details-screen')">Post Details</button>
+                <button onclick="showScreen('marketplace-screen')">Market</button>
+                <button onclick="showScreen('profile-screen')">Profile</button>
+                <button onclick="showScreen('messages-screen')">Messages</button>
+                <button onclick="showScreen('notifications-screen')">Notifications</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showScreen(screenId) {
+            // Hide all screens with a fade effect
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.style.opacity = '0';
+                setTimeout(() => {
+                    screen.style.display = 'none';
+                }, 300);
+            });
+            
+            // Show the selected screen with a fade in effect
+            setTimeout(() => {
+                const targetScreen = document.getElementById(screenId);
+                targetScreen.style.display = 'block';
+                setTimeout(() => {
+                    targetScreen.style.opacity = '1';
+                }, 50);
+            }, 300);
+
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Map screen IDs to nav items
+            const screenToNav = {
+                'home-screen': 0,
+                'explore-screen': 1,
+                'post-screen': 2,
+                'marketplace-screen': 3,
+                'profile-screen': 4
+            };
+
+            if (screenId in screenToNav && !['welcome-screen', 'login-screen', 'signup-screen', 'profile-setup-screen', 'intro-screens', 'post-details-screen'].includes(screenId)) {
+                document.querySelectorAll('.nav-item')[screenToNav[screenId]].classList.add('active');
+            }
+        }
+
+        function handlePostSubmit() {
+            // Determine which post type is active
+            const isMarketplaceListing = document.querySelector('.post-type[data-type="marketplace"]').classList.contains('active');
+            
+            // For demo purposes, just show a success message and return to the feed
+            const message = isMarketplaceListing ? 
+                "Your marketplace listing has been created!" : 
+                "Your post has been shared!";
+                
+            alert(message);
+            showScreen('home-screen');
+        }
+
+        // Initial screen
+        document.addEventListener('DOMContentLoaded', function() {
+            showScreen('welcome-screen');
+            
+            // Add heart animation
+            document.querySelectorAll('.action-icons .fa-heart').forEach(heart => {
+                heart.addEventListener('click', function() {
+                    this.classList.toggle('far');
+                    this.classList.toggle('fas');
+                    this.classList.toggle('active');
+                    
+                    // Update like count
+                    const likeElem = this.closest('.post').querySelector('.post-likes');
+                    if (likeElem) {
+                        const currentLikes = parseInt(likeElem.innerText);
+                        
+                        if (this.classList.contains('active')) {
+                            likeElem.innerText = (currentLikes + 1) + ' likes';
+                        } else {
+                            likeElem.innerText = (currentLikes - 1) + ' likes';
+                        }
+                    }
+                });
+            });
+            
+            // Bottom nav interaction
+            document.querySelectorAll('.nav-item').forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    const screens = ['home-screen', 'explore-screen', 'post-screen', 'marketplace-screen', 'profile-screen'];
+                    showScreen(screens[index]);
+                });
+            });
+            
+            // Make posts clickable to go to detail view
+            document.querySelectorAll('.post-image').forEach(post => {
+                post.addEventListener('click', function() {
+                    showScreen('post-detail-screen');
+                });
+            });
+            
+            // Make explore items clickable to go to detail view
+            document.querySelectorAll('.explore-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    showScreen('post-detail-screen');
+                });
+            });
+
+            // Add interest tag selection
+            document.querySelectorAll('.interest-tag, .category-chip').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+            
+            // Post type selection
+            document.querySelectorAll('.post-type').forEach(type => {
+                type.addEventListener('click', function() {
+                    // Remove active class from all types
+                    document.querySelectorAll('.post-type').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked type
+                    this.classList.add('active');
+                    
+                    // Store the selected post type for the next screen
+                    window.selectedPostType = this.getAttribute('data-type');
+                });
+            });
+            
+            // Media type selection
+            document.querySelectorAll('.option[data-media-type]').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    document.querySelectorAll('.option[data-media-type]').forEach(o => {
+                        o.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked option
+                    this.classList.add('active');
+                });
+            });
+            
+            // Handle post details screen setup
+            document.querySelector('.next-button[onclick="showScreen(\'post-details-screen\')"]').addEventListener('click', function() {
+                const isMarketplaceListing = document.querySelector('.post-type[data-type="marketplace"]').classList.contains('active');
+                
+                // Show/hide appropriate form based on post type
+                document.getElementById('standard-post-details').style.display = isMarketplaceListing ? 'none' : 'flex';
+                document.getElementById('marketplace-listing-details').style.display = isMarketplaceListing ? 'flex' : 'none';
+            });
+            
+            // Add hover effects to buttons
+            document.querySelectorAll('.btn, .auth-option').forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Intro screens navigation
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.intro-slide');
+            const dots = document.querySelectorAll('.intro-dot');
+            
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentSlide = index;
+            }
+            
+            // Add swipe gestures for intro slides
+            const introContainer = document.querySelector('.intro-slides');
+            if (introContainer) {
+                let startX;
+                
+                introContainer.addEventListener('touchstart', function(e) {
+                    startX = e.touches[0].clientX;
+                });
+                
+                introContainer.addEventListener('touchend', function(e) {
+                    const endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+                    
+                    if (Math.abs(diff) > 50) { // Minimum swipe distance
+                        if (diff > 0) { // Swipe left
+                            if (currentSlide < slides.length - 1) {
+                                showSlide(currentSlide + 1);
+                            }
+                        } else { // Swipe right
+                            if (currentSlide > 0) {
+                                showSlide(currentSlide - 1);
+                            }
+                        }
+                    }
+                });
+                
+                // Click dots to navigate slides
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', function() {
+                        showSlide(index);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
